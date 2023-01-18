@@ -104,12 +104,17 @@ class Solution{
   public:
       bool find(struct Node *root,vector<int>&v, int target){
         if(root == NULL)return false;
-        if(root->data == target)return true;
         
-        v.push_back(root->data);
-        if(find(root->left,v,target)||find(root->right,v,target))return true;
+        if(root->data == target){
+            // v.push_back(root->data);
+            return true;
+        }
         
-        v.pop_back();
+        if(find(root->left,v,target)||find(root->right,v,target)){
+            v.push_back(root->data);
+            return true;
+        }
+        
         return false;
       }
     // Function should return all the ancestor of the target node
@@ -118,7 +123,7 @@ class Solution{
          // Code here
          vector<int>v;
          find(root,v,target);
-         reverse(v.begin(),v.end());
+        //  reverse(v.begin(),v.end());
          return v;
     }
 };
