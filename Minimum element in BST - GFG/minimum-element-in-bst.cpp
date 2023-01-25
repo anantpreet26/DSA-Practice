@@ -94,16 +94,21 @@ int main() {
 
 
 // Function to find the minimum element in the given BST.
-void findMin(Node*root,int &minn){
-    if(root == NULL)return ;
-    minn = min(minn,root->data);
-    findMin(root->left,minn);
-    findMin(root->right,minn);
-}
+// void findMin(Node*root,int &minn){
+//     if(root == NULL)return ;
+//     minn = min(minn,root->data);
+//     findMin(root->left,minn);
+//     findMin(root->right,minn);
+// }
+//Time Complexity  : O(N)
+//Auxilary Space : O(H)->O(N)
 int minValue(Node* root) {
-    // Code here
-    int minn = INT_MAX;
-    findMin(root,minn);
-    if(minn == INT_MAX)return -1;
-    return minn;
+    // int minn = INT_MAX;
+    // findMin(root,minn);
+    // if(minn == INT_MAX)return -1;
+    if(root == NULL)return -1;
+    while(root->left!=NULL){
+        root = root->left;
+    }
+    return root->data;
 }
