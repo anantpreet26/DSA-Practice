@@ -17,13 +17,24 @@ class Solution{
         }
         res.push_back(map.size());
         
-        for(int j=k,i=0;j<n;j++,i++){
-            map[A[i]]--;
-            if(map[A[i]]==0)
-            map.erase(A[i]);
-            map[A[j]]++;
-            res.push_back(map.size());
+        // for(int j=k,i=0;j<n;j++,i++){
+        //     map[A[i]]--;
+        //     if(map[A[i]]==0)
+        //     map.erase(A[i]);
+        //     map[A[j]]++;
+        //     res.push_back(map.size());
             
+        // }
+        int i=k;
+        int j=0;
+        while(i<n){
+            
+            map[A[i]]++;
+            i++;
+            if(map[A[j]] == 1)map.erase(A[j]);
+            else map[A[j]]--;
+            j++;
+            res.push_back(map.size());            // i++;
         }
         return res;
     }
